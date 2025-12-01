@@ -1,35 +1,174 @@
-# Modeling Viral Dynamics: Predicting YouTube Video Popularity
+# Predicting Short-Term Popularity Growth of YouTube Trending Videos Using Platform Metrics and Machine Learning
 
-This repository contains a complete, ready-to-run skeleton for the project:
+## 1. Overview & Motivation
 
-**"Modeling Viral Dynamics: Predicting YouTube Video Popularity Using Platform Metrics and External Search Interest"**
+YouTube is one of the most influential media platforms in the world. Videos sometimes go “viral” in a very short time, but it is not always clear which factors drive this rapid popularity.
 
-## How to use
+This project aims to model and predict short-term popularity growth of YouTube trending videos by combining internal platform metrics (views, likes, comments, category, channel information) with external search interest signals from Google Trends.
 
-1. Create a virtual environment and install requirements:
+The objective is to determine which features best predict next-day view growth and to build machine learning models that classify or regress “high-growth” outcomes.
 
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\activate  # Windows PowerShell: .venv\Scripts\Activate.ps1
-   pip install -r requirements.txt
-   ```
+---
 
-2. Download the Kaggle dataset `USvideos.csv` (from `datasnaek/youtube-new`) and place it into:
+## 2. Research Questions
 
-   ```text
-   data/raw/USvideos.csv
-   ```
+- **RQ1:** Which video- and channel-level features (category, publication time, engagement ratios) are associated with higher short-term popularity growth?  
+- **RQ2:** Does Google search interest improve prediction accuracy?  
+- **RQ3:** Can a supervised ML model reliably predict high next-day growth?
 
-3. Open the project in VS Code and run the notebooks in the following order:
+---
 
-   - `notebooks/01_eda.ipynb` – exploratory data analysis
-   - `notebooks/02_feature_engineering.ipynb` – feature engineering and label creation
-   - `notebooks/03_modeling.ipynb` – machine learning models
+## 3. Data Sources
 
-After running `02_feature_engineering.ipynb`, a processed feature file will be written to:
+### 3.1 YouTube Trending Dataset (Primary)
+CSV dataset (Kaggle) including:  
+video_id, title, channel_title, category_id, publish_time, views, likes, dislikes, comment_count, tags, description.
 
-```text
-data/processed/features.csv
+### 3.2 Google Trends Dataset (Enrichment)
+Daily search interest scores exported as CSV:  
+date, interest_score (0–100).
+
+---
+
+## 4. Data Collection & Integration Plan
+
+### YouTube Data Processing
+- Download CSV files from Kaggle.  
+- Filter to a specific timeframe (e.g., several months).  
+- Engineer derived metrics:  
+  - like_to_view_ratio  
+  - comment_to_view_ratio  
+  - days_since_publication  
+  - one-hot encoded categories  
+
+### Google Trends Processing
+- Export daily interest scores for selected topic keywords.  
+- Convert date fields into a standard format.
+
+### Dataset Integration
+- Merge YouTube and Google Trends on the “date” field.  
+- Handle missing values and scale features as necessary.
+
+---
+
+## 5. Planned Methods
+
+### 5.1 Exploratory Data Analysis (EDA)
+- View, like, and comment distributions  
+- Category-level engagement comparisons  
+- Publication time and growth patterns  
+
+### 5.2 Feature Engineering
+- Next-day view growth  
+- Growth rate = (views_next_day – views_today) / views_today  
+- High-growth label (upper 75th percentile)  
+- Ratios: like/view, comment/view  
+- One-hot encoding  
+- Google Trends score  
+
+### 5.3 Statistical Analysis
+- Correlations between features and growth  
+- Hypothesis tests comparing high vs low trends days  
+
+### 5.4 Machine Learning
+Tasks: binary classification or regression  
+Models: Logistic Regression, Random Forest, Gradient Boosting  
+Evaluation metrics: accuracy, F1-score, ROC-AUC, RMSE, MAE  
+Model interpretation via feature importances
+
+---
+
+## 6. Expected Findings
+
+- External search interest from Google Trends may significantly improve predictions.  
+- Certain video categories may show higher growth tendencies.  
+- Engagement ratios are expected to be strong predictors.
+
+---
+
+## 7. Limitations and Future Work
+
+### Current Limitations
+- Trending dataset reflects only already popular content  
+- Google Trends measures general topic interest, not individual video interest  
+
+### Future Directions
+- NLP on titles, descriptions, and tags  
+- Multi-country dataset expansion  
+- More advanced time-series modeling approaches  
+
+---
+
+## 8. Project Structure (Directory Layout)
+
+The recommended folder structure is below (GitHub will render this as plain text without converting it into a code block):
+
+youtube-viral-dynamics  
+│  
+├── data  
+│   ├── raw  
+│   │   ├── USvideos.csv
+│   │   ├── google_trends.csv  
+│   ├── processed  
+│       ├── youtube_merged.csv  
+│       ├── features.csv
+│  
+├── notebooks  
+│   ├── 01_eda.ipynb
+│   ├── 02_feature_engineering.ipynb 
+│   ├── 03_modeling.ipynb  
+│  
+├── src  
+│   ├── data_preparation.py  
+│   ├── feature_engineering.py  
+│   ├── modeling.py  
+│  
+├── reports  
+│   ├── figures  
+│   └── final_report.md  
+│  
+├── requirements.txt  
+└── README.md
+
+---
+
+## 9. Reproducibility
+
+- All code is written in Python.  
+- Dependencies listed in requirements.txt.  
+- Notebooks fully reproduce the data pipeline end-to-end.
+
+---
+
+## 10. AI Usage Disclosure
+
+AI tools may be used for:
+- Drafting and refining documentation  
+- Brainstorming ideas  
+- Suggesting code components  
+
+All AI usage will be documented in a dedicated ai_usage.md file, as required by the course.
+
+---
+
+## 11. Project Timeline
+
+| Date | Milestone |
+|------|-----------|
+| October 31 | Submission of proposal (this README.md) |
+| November 28 | Data collection, cleaning, and EDA |
+| January 2 | ML model development and evaluation |
+| January 9 | Final submission (23:59 deadline) |
+
+---
+
+## 12. Author
+
+**Kaan Tanıdır**  
+Department of Computer Science and Engineering  
+Sabancı University  
+Fall 2025–2026
+
 ```
 
 which is then consumed by the modeling notebook.
