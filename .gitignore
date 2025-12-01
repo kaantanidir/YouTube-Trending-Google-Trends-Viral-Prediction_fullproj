@@ -1,0 +1,19 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+
+# Jupyter checkpoints
+**/.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter notebook metadata
+.ipynb_checkpoints/
