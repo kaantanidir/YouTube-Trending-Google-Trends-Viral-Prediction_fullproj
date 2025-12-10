@@ -101,8 +101,8 @@ Model interpretation via feature importances
 
 ## 8. Project Structure (Directory Layout)
 
-The recommended folder structure is below (GitHub will render this as plain text without converting it into a code block):
-
+The recommended folder structure is below:
+```bash
 youtube-viral-dynamics  
 │  
 ├── data  
@@ -129,7 +129,7 @@ youtube-viral-dynamics
 │  
 ├── requirements.txt  
 └── README.md
-
+```
 ---
 
 ## 9. Reproducibility
