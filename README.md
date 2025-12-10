@@ -162,18 +162,18 @@ data/raw/USvideos.csv
 ```
 ### 5. Run the notebooks in order
 
-00_fetch_google_trends.ipynb
+- **00_fetch_google_trends.ipynb**
 – Fetches and saves google_trends_category.csv
 – Skips the download if the file already exists (prevents API rate limits)
 
-01_eda.ipynb
+- **01_eda.ipynb**
 – Explores the raw YouTube dataset
 
-02_feature_engineering.ipynb
+- **02_feature_engineering.ipynb**
 – Generates features.csv and features_with_trends.csv
 – Integrates Google Trends signals and computes rolling averages
 
-03_modeling.ipynb
+- **03_modeling.ipynb**
 – Trains ML models and evaluates performance using a time-based split
 
 
