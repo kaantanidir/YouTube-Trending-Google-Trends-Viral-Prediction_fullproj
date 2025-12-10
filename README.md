@@ -134,10 +134,50 @@ youtube-viral-dynamics
 
 ## 9. Reproducibility
 
-- All code is written in Python.  
-- Dependencies listed in requirements.txt.  
-- Notebooks fully reproduce the data pipeline end-to-end.
+All code is written in Python, and all dependencies are listed in `requirements.txt`.  
+The entire data pipeline is implemented through Jupyter notebooks and is fully reproducible end-to-end once the raw dataset is provided.
 
+To reproduce the project:
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/kaantanidir/YouTube-Trending-Google-Trends-Viral-Prediction_fullproj.git
+cd YouTube-Trending-Google-Trends-Viral-Prediction_fullproj
+```
+### 2. (Optional) Create and activate a virtual environment
+```bash
+python -m venv venv
+source venv/bin/activate       # macOS / Linux
+venv\Scripts\activate          # Windows
+```
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+### 4. Download the Kaggle dataset
+
+Place the following file in the raw data folder:
+```bash
+data/raw/USvideos.csv
+```
+### 5. Run the notebooks in order
+
+00_fetch_google_trends.ipynb
+– Fetches and saves google_trends_category.csv
+– Skips the download if the file already exists (prevents API rate limits)
+
+01_eda.ipynb
+– Explores the raw YouTube dataset
+
+02_feature_engineering.ipynb
+– Generates features.csv and features_with_trends.csv
+– Integrates Google Trends signals and computes rolling averages
+
+03_modeling.ipynb
+– Trains ML models and evaluates performance using a time-based split
+
+
+Once these steps are completed, all results in the repository can be reproduced exactly.
 ---
 
 ## 10. AI Usage Disclosure
