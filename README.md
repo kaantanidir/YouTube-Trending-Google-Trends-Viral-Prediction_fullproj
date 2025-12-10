@@ -209,5 +209,3 @@ All AI usage will be documented in a dedicated ai_usage.md file, as required by 
 Department of Computer Science and Engineering  
 Sabancı University  
 Fall 2025–2026
-
-```
