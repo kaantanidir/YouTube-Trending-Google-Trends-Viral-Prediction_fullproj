@@ -211,5 +211,3 @@ Sabancı University
 Fall 2025–2026
 
 ```
-
-which is then consumed by the modeling notebook.
