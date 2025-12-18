@@ -68,7 +68,7 @@ date, interest_score (0–100).
 ### 5.2 Feature Engineering
 - Next-day view growth  
 - Growth rate = (views_next_day – views_today) / views_today  
-- High-growth label (upper 75th percentile)  
+- High-growth labels are defined using category-normalized next-day view growth, where each video is compared against others within the same category.
 - Ratios: like/view, comment/view  
 - One-hot encoding  
 - Google Trends score  
@@ -77,7 +77,17 @@ date, interest_score (0–100).
 - Correlations between features and growth  
 - Hypothesis tests comparing high vs low trends days  
 
-### 5.4 Machine Learning
+### 5.4 Hypotheses
+
+H0: Google Trends search interest has no association with short-term popularity growth
+of YouTube trending videos.
+
+H1: Higher Google Trends search interest is associated with significantly higher
+short-term popularity growth.
+
+These hypotheses are tested using non-parametric statistical tests.
+
+### 5.5 Machine Learning
 Tasks: binary classification or regression  
 Models: Logistic Regression, Random Forest, Gradient Boosting  
 Evaluation metrics: accuracy, F1-score, ROC-AUC, RMSE, MAE  
@@ -188,7 +198,16 @@ Once these steps are completed, all results in the repository can be reproduced 
 
 ---
 
-## 10. AI Usage Disclosure
+## 10. Ethical Considerations
+
+This project relies exclusively on publicly available, aggregated data and does not
+involve any personal or private user information. However, algorithmic bias may arise
+from the nature of YouTube’s trending mechanism, which can favor large channels or
+specific content categories. The results should therefore be interpreted as patterns
+within an already curated subset of content rather than the entire YouTube ecosystem.
+
+
+## 11. AI Usage Disclosure
 
 AI tools may be used for:
 - Drafting and refining documentation  
@@ -199,7 +218,7 @@ All AI usage will be documented in a dedicated ai_usage.md file, as required by 
 
 ---
 
-## 11. Project Timeline
+## 12. Project Timeline
 
 | Date | Milestone |
 |------|-----------|
@@ -210,7 +229,7 @@ All AI usage will be documented in a dedicated ai_usage.md file, as required by 
 
 ---
 
-## 12. Author
+## 13. Author
 
 **Kaan Tanıdır**  
 Department of Computer Science and Engineering  
