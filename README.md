@@ -1,5 +1,12 @@
 # Predicting Short-Term Popularity Growth of YouTube Trending Videos Using Platform Metrics and Machine Learning
 
+## Abstract
+This project investigates whether external search interest data from Google Trends
+can improve the prediction of short-term popularity growth of YouTube trending videos.
+Using publicly available YouTube Trending data enriched with Google Trends search
+interest scores, we apply exploratory data analysis, statistical hypothesis testing,
+and machine learning models to evaluate the contribution of external signals.
+
 ## 1. Overview & Motivation
 
 YouTube is one of the most influential media platforms in the world. Videos sometimes go “viral” in a very short time, but it is not always clear which factors drive this rapid popularity.
